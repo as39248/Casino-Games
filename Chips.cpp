@@ -24,22 +24,19 @@ void Chips::bet(){
     try{                   //check if the input is a number
         stod(strbets);
 
+        bets = stod(strbets);
+        if (balance >= bets){
+            balance -= bets;
+            betAmount = bets;
+        }
+        else{
+           std::cout << "Invalid amount&" << std::endl;
+           bet();
+        }
     }
-    catch (invalid_argument&){
+    catch (invalid_argument){
         std::cout << "Invalid input" << std::endl;
-       bet();
-    }
-
-
-
-    bets = stod(strbets);
-    if (balance >= bets){
-        balance -= bets;
-        betAmount = bets;
-    }
-    else{
-       std::cout << "Invalid amount" << std::endl;
-       bet();
+        bet();
     }
 }
 
